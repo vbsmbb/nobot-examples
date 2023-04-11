@@ -4,9 +4,12 @@
     "no-console": 0,
     "linebreak-style": ["error", "unix"],
     "no-use-before-define": ["off"],
-    "comma-dangle": ["error", "never"],
+    "comma-dangle": ["error", "always-multiline"],
     "global-require": ["off"],
-    "import/no-dynamic-require": ["off"]
+    "import/no-dynamic-require": ["off"],
+    "quotes": ["error", "double"],
+    "arrow-parens": ["error", "always"],
+    "no-underscore-dangle": ["error", "off"]
   },
   "env": {
     "browser": false,

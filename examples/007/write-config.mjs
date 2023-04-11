@@ -1,7 +1,9 @@
-const path = require("path");
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
 // helpers
-const writeJson = require("./helpers/write-json.js");
-const getJiraData = require("./helpers/get-jira-data.js");
+import writeJson from "./helpers/write-json.mjs";
+import getJiraData from "./helpers/get-jira-data.mjs";
 
 const args = process.argv.slice(2);
 const [ticket] = args;
@@ -15,7 +17,8 @@ if (jiraData === undefined) {
   process.exit(0);
 }
 
-const newConfigFile = path.join(__dirname, "data", CONFIG_FILE);
+const scriptPath = dirname(fileURLToPath(import.meta.url));
+const newConfigFile = join(scriptPath, "data", CONFIG_FILE);
 
 writeJson(newConfigFile, jiraData)
   .then((msg) => console.log(msg))

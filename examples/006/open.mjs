@@ -1,5 +1,5 @@
-const { platform } = require("os");
-const { exec } = require("child_process");
+import { platform } from "os";
+import { exec } from "child_process";
 
 const WINDOWS_PLATFORM = "win32";
 const MAC_PLATFORM = "darwin";

@@ -1,4 +1,4 @@
-const queryString = require("querystring");
+import { stringify } from "querystring";
 
 //  https://jira.my-company.com/rest/api/latest/search?jql="assignee=shaun.stone&startAt=2&maxResults=2"
 
@@ -10,6 +10,6 @@ const jqlParams = {
   maxResults: 2,
 };
 
-const apiUrl = `${apiHost}"${queryString.stringify(jqlParams)}"`;
+const apiUrl = `${apiHost}"${stringify(jqlParams)}"`;
 
 console.log(`My JQL api call is: ${apiUrl}`);
