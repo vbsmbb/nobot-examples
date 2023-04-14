@@ -1,0 +1,4 @@
+const JSON_WHITESPACE = 4;
+const NO_CHOICE_MADE = -1;
+
+export { JSON_WHITESPACE, NO_CHOICE_MADE };

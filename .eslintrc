@@ -2,7 +2,7 @@
   "extends": "airbnb",
   "rules": {
     "no-console": 0,
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": ["error", "off"],
     "no-use-before-define": ["off"],
     "comma-dangle": ["error", "always-multiline"],
     "global-require": ["off"],
