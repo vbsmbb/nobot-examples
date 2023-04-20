@@ -1,15 +1,13 @@
 import "colors";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { createRequire } from "module";
+import { join } from "path";
 import { chdir } from "process";
 import { exec } from "child_process";
+import { getJSONData, getAppPath } from "../../helpers/appUtils.mjs";
 
-const require = createRequire(import.meta.url);
-const json = require("./config.json");
-const repositories = json.repositories;
+const json = getJSONData(import.meta.url, "./config.json");
+const { repositories } = json;
 
-const scriptPath = dirname(fileURLToPath(import.meta.url));
+const scriptPath = getAppPath(import.meta.url);
 const repositoriesDirectory = join(scriptPath, "my-repositories");
 
 function cloneRepositories(repositoryPath, repositoryList = []) {

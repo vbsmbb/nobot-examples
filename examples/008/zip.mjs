@@ -1,11 +1,11 @@
 import archiver from "archiver";
 import { createWriteStream, createReadStream } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { join } from "path";
+import { getAppPath } from "../../helpers/appUtils.mjs";
 
 const ZLIB_BEST_COMPRESSION = 9;
 // create a file to stream archive data to.
-const scriptPath = dirname(fileURLToPath(import.meta.url));
+const scriptPath = getAppPath(import.meta.url);
 const zipPath = join(scriptPath, "files.zip");
 const output = createWriteStream(zipPath);
 const archive = archiver("zip", {

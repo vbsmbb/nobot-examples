@@ -2,7 +2,7 @@ import { existsSync, mkdirSync } from "fs";
 import { createInterface } from "readline";
 import { stdin, stdout } from "process";
 import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { getAppPath } from "../../helpers/appUtils.mjs";
 
 const onProjectInput = (name) => {
   interfaceInstance.close();
@@ -16,7 +16,7 @@ const createProjectDirectory = (enteredName) => {
     console.log("Cannot create a project without a name");
     process.exit(0);
   }
-  const scriptPath = dirname(fileURLToPath(import.meta.url));
+  const scriptPath = getAppPath(import.meta.url);
   const projectPath = join(scriptPath, name);
   if (existsSync(projectPath)) {
     console.log(`${name} already exists`);

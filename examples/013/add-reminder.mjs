@@ -1,11 +1,10 @@
 import { writeFileSync } from "fs";
 import { JSON_WHITESPACE } from "./constants.mjs";
-import { getAppCfg, getAppPath } from "./appUtils.mjs";
+import { getJSONData, getAppPath } from "../../helpers/appUtils.mjs";
 import { argv, exit } from "process";
 
-const appCfg = getAppCfg("./.reminders.json");
-const { reminders } = appCfg;
-
+const json = getJSONData(import.meta.url, "./.reminders.json");
+const { reminders } = json;
 const args = argv.slice(2);
 let reminder = args[0];
 
@@ -25,7 +24,7 @@ if (hasReminderAlready) {
 
 reminders.push(reminder);
 
-const appPath = getAppPath();
+const appPath = getAppPath(import.meta.url);
 writeFileSync(
   `${appPath}/.reminders.json`,
   JSON.stringify({ reminders }, null, JSON_WHITESPACE)

@@ -1,20 +1,17 @@
 // const shell = require("shelljs");
 import { question } from "readline-sync";
-import { join, dirname } from "path";
-import { createRequire } from "module";
-import { fileURLToPath } from "url";
+import { join } from "path";
 import { exec } from "child_process";
 import { chdir } from "process";
+import { getJSONData, getAppPath } from "../../helpers/appUtils.mjs";
 
-const require = createRequire(import.meta.url);
-const appCfg = require("./config.json");
-const repository = appCfg.repository;
-// const repository = require("./config");
+const json = getJSONData(import.meta.url, "./config.json");
+const { repository } = json;
 const { delivery, baseBranch } = repository;
 const repoName = delivery.substring(delivery.lastIndexOf("/"));
 
 // Changing into the repo's directory
-const appPath = dirname(fileURLToPath(import.meta.url));
+const appPath = getAppPath(import.meta.url);
 const repoPath = join(appPath, repoName);
 chdir(repoPath);
 
